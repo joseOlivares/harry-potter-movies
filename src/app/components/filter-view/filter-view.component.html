@@ -4,12 +4,18 @@
       <fieldset>
         <legend>Filters</legend>
         <label for="title">Title</label>
-        <input type="text" id="title" placeholder="Title of the movie" #searchTitle/>
+        <input type="text" id="title" placeholder="Title of the movie" #searchTitle
+        (input)="runSearch(searchTitle.value, $event)"/>
         <label for="release">Release year</label>
-        <input type="number" id="release" placeholder="Year" #searchYear/>
-        <button class="primary" (click)="runSearch(searchTitle.value, 1, $event)">Search</button>
+        <input type="number" id="release" placeholder="YYYY" #searchYear (input)="runSearch(searchYear.value, $event)"/>
       </fieldset>
     </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <app-movie-list></app-movie-list>
   </div>
 </div>
 

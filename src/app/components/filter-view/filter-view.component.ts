@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, Signal, signal } from '@angular/core';
 import { MovieListComponent } from '../movie-list/movie-list.component';
+import {  MovieService } from '../../services/movie.service';
+import { Movie } from '../../types/types';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-filter-view',
@@ -9,6 +12,13 @@ import { MovieListComponent } from '../movie-list/movie-list.component';
   styleUrl: './filter-view.component.css'
 })
 export class FilterViewComponent {
+  protected movieList!:Signal<Movie[]>;
+
+  constructor( private movieService: MovieService) {
+    this.movieList = this.movieService.getMovies();
+   }
+
+
 
 
   runSearch(term = "", event?: Event) {

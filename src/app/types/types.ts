@@ -13,3 +13,5 @@ export interface MovieDetails extends Movie {
   producers:        string[];
   summary:          string;
 }
+
+export type MovieDuration=Movie["duration"];

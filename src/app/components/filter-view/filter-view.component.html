@@ -14,9 +14,18 @@
 </div>
 
 <div class="row">
+  <!--
   <div class="col-sm-12">
-    <app-movie-list></app-movie-list>
+    @for (movie of movieList()  ; track $index) {
+      <p>{{movie.title}}</p>
+    }
+    @empty {
+      <p>No movies found</p>
+    }
+      </div>
+  -->
+  <div class="col-sm-12">
+    <app-movie-list [movieList]="movieList()"></app-movie-list>
   </div>
-</div>
 
 

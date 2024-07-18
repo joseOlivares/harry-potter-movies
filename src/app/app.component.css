@@ -1,0 +1,6 @@
+
+@media (min-width: 767px) {
+  .container{
+    max-width: 80%;
+  }
+}

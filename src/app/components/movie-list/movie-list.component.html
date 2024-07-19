@@ -12,9 +12,10 @@
         </li>
       </div>
       <div class="col-sm-12 col-md-2 text-center">
-        <button class="primary large" id="{{movie.id}}">Details</button>
+        <button class="primary large" id="{{movie.id}}" (click)="showDetails(movie.id)">Details</button>
       </div>
     </div>
   }
+  @empty {<li>There are no results to show <span class="icon-info"></span></li>}
 </ul>
 

@@ -1,33 +1,20 @@
-<!--
-<div class="row">
-<ul>
-  <li>
-    <h3> Title</h3>
-    <p>Descripción</p>
-  </li>
-
-</ul>
-</div>
--->
 <ul>
   @for (movie of movieList()  ; track $index) {
     <div class="row">
-    <div class="col-sm-12 col-md-10">
-      <li>
-        <h3>
-          {{movie.title}}
-          <small class="mt-1">
-            Release date: {{movie.release_date}} &nbsp;&nbsp;Budget: {{movie.budget | million }} &nbsp;&nbsp;Duration: {{movie.duration | duration}}
-          </small>
-        </h3>
-      </li>
+      <div class="col-sm-12 col-md-10">
+        <li>
+          <h3>
+            {{movie.title}}
+            <small class="mt-1">
+              Release date: {{movie.release_date}} &nbsp;&nbsp;Budget: {{movie.budget | million }} &nbsp;&nbsp;Duration: {{movie.duration | duration}}
+            </small>
+          </h3>
+        </li>
+      </div>
+      <div class="col-sm-12 col-md-2 text-center">
+        <button class="primary large" id="{{movie.id}}">Details</button>
+      </div>
     </div>
-    <div class="col-sm-12 col-md-2 text-center">
-      <button class="primary large" id="{{movie.id}}">Details</button>
-    </div>
-
-  </div>
-
   }
 </ul>
 

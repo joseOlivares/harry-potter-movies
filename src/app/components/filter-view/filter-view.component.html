@@ -5,27 +5,16 @@
         <legend>Filters</legend>
         <label for="title">Title</label>
         <input type="text" id="title" placeholder="Title of the movie" #searchTitle
-        (input)="runSearch(searchTitle.value, $event)"/>
+        (input)="runFilter(searchTitle.value, $event)"/>
         <label for="release">Release year</label>
-        <input type="number" id="release" placeholder="YYYY" #searchYear (input)="runSearch(searchYear.value, $event)"/>
+        <input type="number" id="release" placeholder="YYYY" #searchYear (input)="runFilter(searchYear.value, $event)"/>
       </fieldset>
     </form>
   </div>
 </div>
 
 <div class="row">
-  <!--
   <div class="col-sm-12">
-    @for (movie of movieList()  ; track $index) {
-      <p>{{movie.title}}</p>
-    }
-    @empty {
-      <p>No movies found</p>
-    }
-      </div>
-  -->
-  <div class="col-sm-12">
-    <app-movie-list [movieList]="movieList()"></app-movie-list>
+    <app-movie-list [movieList]="filteredList()"></app-movie-list>
   </div>
-
-
+</div>

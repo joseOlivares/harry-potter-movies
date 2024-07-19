@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Signal, signal } from '@angular/core';
 import { Movie } from '../types/types';
-import { Observable } from 'rxjs';
 import { API_URL } from '../constants/constants';
 
 
@@ -19,7 +18,7 @@ export class MovieService {
     this.http.get<Movie[]>( `${API_URL}/movies` )
     .subscribe( data => {
       this.lastMovieList.set(data);
-      console.log(this.lastMovieList()[0]);
+      //console.log(this.lastMovieList()[0]);
     });
     return this.lastMovieList.asReadonly();
   }

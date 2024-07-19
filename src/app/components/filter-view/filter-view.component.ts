@@ -24,12 +24,29 @@ export class FilterViewComponent {
 
 
 
-  runFilter(term = "", event?: Event) {
+  runFilter(title = "",year="-1", event?: Event) {
     event?.preventDefault();
-    console.log(term);
+    console.log(title, year);
+    const searchTitle=title.toLowerCase();
 
+
+    //let filteredArray= this.movieList()
+    //.filter( movie=>(movie.title.toLowerCase().includes(searchTitle) && movie.release_date.getFullYear().toString().includes(year)) );
+
+    let filteredArray= this.movieList().filter(movie=>{
+
+      if(movie.title.toLowerCase().includes(searchTitle) && movie.release_date.includes(year)){
+        return true;
+      }
+      return false;
+    });
+
+    console.log(filteredArray);
+    this.filteredList.update(()=>[...filteredArray]);
+
+/*
     this.movieList().map( movieList => {
-      if(movieList.title.toLowerCase().includes(term.toLowerCase())){ //if term is included in title
+      if(movieList.title.toLowerCase().includes(title.toLowerCase())){ //if term is included in title
         const index=this.filteredList().indexOf(movieList);
         if(index===-1){ //if not exist in filteredList, it will be added
           this.filteredList.update(filteredList => [...filteredList, movieList]);
@@ -43,7 +60,7 @@ export class FilterViewComponent {
 
       console.log(this.filteredList());
     });
-
+*/
   }
 
 }

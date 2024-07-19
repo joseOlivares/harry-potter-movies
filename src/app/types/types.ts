@@ -3,7 +3,7 @@ export interface Movie {
   title:        string;
   duration:     string;
   budget:       string;
-  release_date: Date;
+  release_date: string;
 }
 
 export interface MovieDetails extends Movie {

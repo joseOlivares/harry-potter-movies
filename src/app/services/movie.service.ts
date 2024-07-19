@@ -15,14 +15,14 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
+  /*
   getMovies(): Signal<Movie[]> {
     this.http.get<Movie[]>( `${API_URL}/movies` )
     .subscribe( data => {
       this.lastMovieList.set(data);
-      //console.log(this.lastMovieList()[0]);
     });
     return this.lastMovieList.asReadonly();
-  }
+  }*/
 
   getAllMovies(): Observable<Movie[]> {
    return this.http.get<Movie[]>( `${API_URL}/movies` );

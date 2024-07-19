@@ -5,9 +5,9 @@
         <legend>Filters</legend>
         <label for="title">Title</label>
         <input type="text" id="title" placeholder="Title of the movie" #searchTitle
-        (input)="runFilter(searchTitle.value, $event)"/>
+        (input)="runFilter(searchTitle.value, searchYear.value, $event)"/>
         <label for="release">Release year</label>
-        <input type="number" id="release" placeholder="YYYY" #searchYear (input)="runFilter(searchYear.value, $event)"/>
+        <input type="number" id="release" placeholder="YYYY" #searchYear (input)="runFilter(searchTitle.value, searchYear.value, $event)"/>
       </fieldset>
     </form>
   </div>

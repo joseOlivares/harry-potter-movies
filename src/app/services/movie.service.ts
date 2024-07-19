@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, Signal, signal } from '@angular/core';
 import { Movie } from '../types/types';
 import { API_URL } from '../constants/constants';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -21,6 +22,10 @@ export class MovieService {
       //console.log(this.lastMovieList()[0]);
     });
     return this.lastMovieList.asReadonly();
+  }
+
+  getAllMovies(): Observable<Movie[]> {
+   return this.http.get<Movie[]>( `${API_URL}/movies` );
   }
 
 }

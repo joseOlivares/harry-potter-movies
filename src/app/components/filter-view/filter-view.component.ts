@@ -1,8 +1,8 @@
-import { Component, inject, Signal, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MovieListComponent } from '../movie-list/movie-list.component';
-import {  MovieService } from '../../services/movie.service';
+import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../types/types';
-import {toObservable} from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-filter-view',
   standalone: true,
@@ -11,18 +11,15 @@ import {toObservable} from '@angular/core/rxjs-interop';
   styleUrl: './filter-view.component.css'
 })
 export class FilterViewComponent {
-  protected movieList!:Signal<Movie[]>;
 
+  protected movieList = signal<Movie[]>([]);
   protected filteredList = signal<Movie[]>([]);
 
-  private movieService2 = inject(MovieService);
-  private filteredList$ = toObservable(this.movieService.getMovies());
-
-
-
   constructor( private movieService: MovieService) {
-    this.movieList = this.movieService.getMovies();
-    this.filteredList$.subscribe( data => this.filteredList.update(() => data));
+    this.movieService.getAllMovies().pipe(takeUntilDestroyed()).subscribe( data => {
+      this.movieList.update(() => data);
+      this.filteredList.update(() => data);
+    });
    }
 
 
@@ -45,8 +42,6 @@ export class FilterViewComponent {
       }
 
       console.log(this.filteredList());
-
-
     });
 
   }

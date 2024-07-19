@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Movie } from '../../types/types';
+import { Movie, MovieId } from '../../types/types';
 import { DurationPipe } from '../../pipes/duration.pipe';
 import { MillionPipe } from '../../pipes/million.pipe';
 import { Router, RouterLink } from '@angular/router';
@@ -19,7 +19,7 @@ export class MovieListComponent {
   movieList=input.required<Movie[]>();
 
 
-  showDetails(id: string = "") {
+  showDetails(id: MovieId = "") {
     //console.log(id);
     this.router.navigate(['details/' + id]);
   }

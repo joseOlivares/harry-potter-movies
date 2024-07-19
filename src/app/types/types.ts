@@ -14,4 +14,6 @@ export interface MovieDetails extends Movie {
   summary:          string;
 }
 
+//custom types
 export type MovieDuration=Movie["duration"];
+export type MovieId=Movie["id"];

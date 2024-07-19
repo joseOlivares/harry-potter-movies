@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Signal, signal } from '@angular/core';
-import { Movie, MovieDetails } from '../types/types';
+import { Movie, MovieDetails, MovieId } from '../types/types';
 import { API_URL } from '../constants/constants';
 import { Observable } from 'rxjs';
 
@@ -20,7 +20,7 @@ export class MovieService {
    return this.http.get<Movie[]>( `${API_URL}/movies` );
   }
 
-  getMovieDetails(id: string): Observable<MovieDetails> {
+  getMovieDetails(id: MovieId): Observable<MovieDetails> {
     //console.log("Service -- solicitando id= "+id)
 
     return this.http.get<MovieDetails>( `${API_URL}/movies/${id}` );

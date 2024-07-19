@@ -24,7 +24,7 @@ export class FilterViewComponent {
 
   runFilter(title = "",year="-1", event?: Event) {
     event?.preventDefault();
-    console.log(title, year);
+   // console.log(title, year);
     const searchTitle=title.toLowerCase();
 
     let filteredArray= this.movieList().filter(movie=>{
@@ -34,7 +34,7 @@ export class FilterViewComponent {
       return false;
     });
 
-    console.log(filteredArray);
+    //console.log(filteredArray);
     this.filteredList.update(()=>[...filteredArray]);
   }
 

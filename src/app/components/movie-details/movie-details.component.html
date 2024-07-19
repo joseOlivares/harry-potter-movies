@@ -1,10 +1,10 @@
-<button class="primary large" (click)="goBack()"> <span class="icon-home"></span>Back</button>
+<button class="primary large" (click)="goBack()"> <span class="icon-home"></span> Back</button>
 
 @if (movieDetails$ | async; as movieDetails ) {
 <h1>{{movieDetails.title}}</h1>
 <div class="row">
   <div class="col-sm-12 col-md-3">
-    <img [ngSrc]="movieDetails.poster" [alt]="movieDetails.title" width="220" height="350"/>
+    <img [ngSrc]="movieDetails.poster" [alt]="movieDetails.title" width="220" height="325" priority />
   </div>
   <div class="col-sm-12 col-md-9">
     <p><b>Summary:</b> {{movieDetails.summary}}</p>
@@ -37,3 +37,4 @@
   </div>
 </div>
 }
+@else {<p>Loading...</p>}

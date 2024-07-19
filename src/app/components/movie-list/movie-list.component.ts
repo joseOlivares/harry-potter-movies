@@ -20,7 +20,7 @@ export class MovieListComponent {
 
 
   showDetails(id: string = "") {
-    console.log(id);
+    //console.log(id);
     this.router.navigate(['details/' + id]);
   }
 

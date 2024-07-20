@@ -15,7 +15,7 @@ export class MovieService {
 
   private http=inject(HttpClient);
 
-  private API_URL=environment.api_url;
+ // private API_URL=environment.api_url;
 
   constructor() { }
 

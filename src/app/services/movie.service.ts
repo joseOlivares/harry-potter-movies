@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class MovieService {
 
-  private lastMovieList= signal<Movie[]>([]); ;
+  //private lastMovieList= signal<Movie[]>([]); ;
 
   private http=inject(HttpClient);
 

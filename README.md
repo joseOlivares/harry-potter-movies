@@ -1,4 +1,13 @@
 # HarryPotterMovies
+This apps shows how to develop an Angular app with industry standards. It includes API Rest consuming, routing, services, pipes and many best practices.
+
+You can check this project running on https://harry-potter-movies-pink.vercel.app/
+
+## Author info :ninja:
+José Luis Olivares 
+Please endorse my skills on Linkedin (https://www.linkedin.com/in/jolivaress/)
+
+## Angular version
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
 

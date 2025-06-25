@@ -12,7 +12,7 @@ npm cache clean --force
 
 echo.
 echo 3. Instalando nuevas dependencias...
-npm install --legacy-peer-deps
+npm install --force
 
 echo.
 echo 4. Actualizando Angular CLI globalmente (opcional)...

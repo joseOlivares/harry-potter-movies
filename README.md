@@ -9,7 +9,7 @@ Please endorse my skills on Linkedin (https://www.linkedin.com/in/jolivaress/)
 
 ## Angular version
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1 and has been upgraded to Angular 20.0.5.
 
 ## Development server
 

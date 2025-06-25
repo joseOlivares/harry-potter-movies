@@ -1,6 +1,6 @@
-# Actualización a Angular 20
+# Actualización a Angular 20 - COMPLETADA
 
-Este documento describe los cambios realizados para actualizar el proyecto de Angular 17 a Angular 20.
+Este documento describe los cambios realizados para actualizar el proyecto de Angular 17 a Angular 20. La migración se ha completado exitosamente.
 
 ## Cambios realizados
 

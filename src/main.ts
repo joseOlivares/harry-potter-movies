@@ -4,6 +4,8 @@ import { AppComponent } from './app/app.component';
 import {setupWorker} from 'msw/browser';
 import {http, HttpResponse} from 'msw';
 
+// Aseguramos compatibilidad con Angular 20
+
 const handlers = [
   http.get('/movies/:id', ({ params }) => {
 

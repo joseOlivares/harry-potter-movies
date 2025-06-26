@@ -1,0 +1,36 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  # nombre del proyecto en openshift
+  name: angular-openshift
+  # nombre del namespace
+  namespace: joseluiss-503-dev
+  labels:
+    app.kubernetes.io/name: angular-openshift
+    app.kubernetes.io/part-of: angular-openshift-app
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/target: "100"
+        autoscaling.knative.dev/target-utilization-percentage: "70"
+        autoscaling.knative.dev/window: 60s
+    spec:
+      containers:
+        - name: angular-openshift
+        # image: gcr.io/PROJECT_ID/REPOSITORY_NAME/IMAGE_NAME:IMAGE_TAG
+          image: docker.io/joolivares/angular-openshift:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault

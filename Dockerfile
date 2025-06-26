@@ -25,8 +25,11 @@ FROM nginxinc/nginx-unprivileged:stable-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
+##-------------------MODIFICAR EL NOMBRE DEL PROYECTO ANGULAR-------------------
+ARG PROJECT_NAME=harry-potter-movies
+
 #Copy the Angular build files to the Nginx server
-COPY --from=build /app/dist/demo-app/browser /usr/share/nginx/html
+COPY --from=build /app/dist/${PROJECT_NAME}/browser /usr/share/nginx/html
 
 # Expose port 8080 (required for OpenShift)
 EXPOSE 8080

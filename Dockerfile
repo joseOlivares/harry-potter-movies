@@ -1,5 +1,3 @@
-
-
 ### STAGE 1: Build the angular App###
 FROM node:lts-alpine AS build
 # Set working directory
@@ -25,8 +23,10 @@ FROM nginxinc/nginx-unprivileged:stable-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
+##*******************************************************************************
 ##-------------------MODIFICAR EL NOMBRE DEL PROYECTO ANGULAR-------------------
-ARG PROJECT_NAME=harry-potter-movies
+##*******************************************************************************
+ARG PROJECT_NAME=angular-dashboard
 
 #Copy the Angular build files to the Nginx server
 COPY --from=build /app/dist/${PROJECT_NAME}/browser /usr/share/nginx/html

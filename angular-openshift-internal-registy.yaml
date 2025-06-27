@@ -1,0 +1,56 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  # nombre de la aplicación en openshift
+  name: angular-dashboard
+  # nombre del namespace
+  namespace: joseluiss-503-dev
+  labels:
+    app.kubernetes.io/name: angular-dashboard
+    app.kubernetes.io/part-of: angular-dashboard-app
+    # Esto hace que OpenShift le coloque el logo antiguo de Angular (no existe el nuevo)
+    app.openshift.io/runtime: angularjs
+    app.openshift.io/runtime-version: latest
+  # Actualizaciones automáticas
+  annotations:
+    image.openshift.io/triggers: |
+      [{
+        "from": {
+          "kind": "ImageStreamTag",
+          "name": "angular-dashboard:latest",
+          "namespace": "joseluiss-503-dev"
+        },
+        "fieldPath": "spec.template.spec.containers[?(@.name==\"angular-dashboard\")].image",
+        "paused": false
+      }]
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/target: "100"
+        autoscaling.knative.dev/target-utilization-percentage: "70"
+        autoscaling.knative.dev/window: 60s
+      # Esto hace que OpenShift le coloque el logo antiguo de Angular (no existe el nuevo)
+      labels:
+        app.openshift.io/runtime: angularjs
+        app.openshift.io/runtime-version: latest
+    spec:
+      containers:
+        # Configurar de dónde tomará la imagen del contenedor
+        - name: angular-dashboard
+        # image: gcr.io/PROJECT_ID/REPOSITORY_NAME/IMAGE_NAME:IMAGE_TAG
+          image: image-registry.openshift-image-registry.svc:5000/joseluiss-503-dev/angular-dashboard:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 8080
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
